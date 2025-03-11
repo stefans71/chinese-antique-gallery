@@ -1,26 +1,172 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --primary-color: #1C1411;
+    --secondary-color: #F8F6F4;
+    --accent-color: #D4B88C;
+    --text-color: #2A2422;
+    --wood-frame: #2C1810;
+    --modern-gold: #BFA37C;
+  }
+
+  html {
+    @apply antialiased scroll-smooth;
+  }
+
+  body {
+    @apply font-sans bg-secondary text-primary min-h-screen;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-cormorant font-medium tracking-tight text-primary;
+  }
+
+  /* Form Elements */
+  .form-input,
+  .form-textarea,
+  .form-select,
+  .form-multiselect {
+    @apply w-full rounded-lg border-stone-200 bg-white/80 shadow-form transition-all duration-300
+           focus:border-accent focus:ring-1 focus:ring-accent/20 focus:ring-opacity-50 focus:bg-white
+           hover:shadow-form-hover focus:shadow-form-focus;
+  }
+
+  .form-checkbox,
+  .form-radio {
+    @apply rounded border-stone-300 text-accent shadow-sm transition-all duration-300
+           focus:border-accent focus:ring-1 focus:ring-accent/20 focus:ring-opacity-50
+           hover:border-accent/50;
+  }
+
+  /* Glass Effects */
+  .glass {
+    @apply bg-white/90 backdrop-blur-sm border border-white/20 shadow-elegant;
+  }
+
+  .glass-dark {
+    @apply bg-primary/90 backdrop-blur-sm border border-white/10 shadow-elegant;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-stone-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-stone-300 rounded-full hover:bg-stone-400 transition-colors;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply bg-accent text-primary px-6 py-3 rounded-lg 
+           font-medium transition-all duration-300 hover:bg-modern-gold 
+           hover:shadow-lg hover:-translate-y-0.5 focus:outline-none 
+           focus:ring-2 focus:ring-accent focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-primary text-white px-6 py-3 rounded-lg 
+           font-medium transition-all duration-300 hover:bg-wood-frame 
+           hover:shadow-lg hover:-translate-y-0.5 focus:outline-none 
+           focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+
+  .card {
+    @apply bg-white/90 backdrop-blur-sm rounded-2xl shadow-elegant overflow-hidden 
+           transition-all duration-300 hover:shadow-elegant-hover hover:-translate-y-1
+           border border-stone-100/50;
+  }
+
+  .heading-1 {
+    @apply font-cormorant text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight;
+  }
+
+  .heading-2 {
+    @apply font-cormorant text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight;
+  }
+
+  .heading-3 {
+    @apply font-cormorant text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight;
+  }
+
+  .text-body {
+    @apply text-base md:text-lg leading-relaxed text-stone-700;
+  }
+
+  /* Auth Form Specific */
+  .auth-input {
+    @apply form-input bg-white/70 border-stone-200 focus:bg-white 
+           focus:border-accent focus:ring-accent/20 rounded-lg transition-all duration-300;
+  }
+
+  .auth-checkbox {
+    @apply form-checkbox h-4 w-4 rounded border-stone-300 text-accent 
+           focus:ring-accent/20 focus:ring-offset-0 transition-all duration-300;
+  }
+
+  .auth-button {
+    @apply w-full bg-gradient-to-r from-accent to-modern-gold 
+           hover:from-modern-gold hover:to-accent text-primary font-medium
+           transition-all duration-500 shadow-[0_4px_20px_rgba(191,163,124,0.3)] 
+           hover:shadow-[0_4px_25px_rgba(191,163,124,0.5)] hover:-translate-y-0.5;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+/* Lightbox customization */
+.lightbox-overlay {
+  background-color: rgba(28, 20, 17, 0.95) !important;
+}
+
+.lightbox-content {
+  border-radius: 8px;
+  overflow: hidden;
 }
