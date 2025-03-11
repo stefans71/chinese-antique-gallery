@@ -24,11 +24,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         <input
           type={type}
           className={cn(
-            'w-full px-4 py-3 rounded-lg',
-            'border border-stone-200 bg-white/80',
-            'shadow-sm hover:shadow-form-hover focus:shadow-form-focus',
-            'focus:border-accent focus:ring-2 focus:ring-accent/20 focus:ring-opacity-50 focus:bg-white',
-            'outline-none transition-all duration-300',
+            'auth-input',
+            'w-full px-4 py-3',
+            'transform transition-all duration-300',
+            'hover:-translate-y-0.5',
             error && 'border-red-500 focus:border-red-500 focus:ring-red-500/20',
             className
           )}
@@ -36,9 +35,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {error ? (
-          <p className="text-sm text-red-600 animate-fade-in">{error}</p>
+          <p className="text-sm text-red-600 animate-fade-in pl-1">{error}</p>
         ) : helperText ? (
-          <p className="text-sm text-stone-500">{helperText}</p>
+          <p className="text-sm text-stone-500 pl-1">{helperText}</p>
         ) : null}
       </div>
     )
@@ -60,18 +59,18 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         {label && (
           <label
             htmlFor={props.id}
-            className="block text-sm font-medium text-stone-700"
+            className="block text-sm font-medium text-stone-700 pl-1 mb-1"
           >
             {label}
           </label>
         )}
         <textarea
           className={cn(
-            'w-full px-4 py-3 rounded-lg',
-            'border border-stone-200 bg-white/80',
-            'shadow-sm hover:shadow-form-hover focus:shadow-form-focus',
-            'focus:border-accent focus:ring-2 focus:ring-accent/20 focus:ring-opacity-50 focus:bg-white',
-            'outline-none transition-all duration-300 min-h-[80px]',
+            'auth-input',
+            'w-full px-4 py-3',
+            'transform transition-all duration-300',
+            'hover:-translate-y-0.5',
+            'min-h-[80px] resize-y',
             error && 'border-red-500 focus:border-red-500 focus:ring-red-500/20',
             className
           )}

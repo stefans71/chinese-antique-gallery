@@ -40,10 +40,10 @@ export default function VerifyEmail() {
   }
 
   return (
-    <div className="min-h-[60vh] flex items-center justify-center px-4">
-      <div className="w-full max-w-md space-y-8 text-center">
+    <div className="w-full max-w-md mx-auto px-4 animate-fade-in">
+      <div className="bg-white rounded-[16px] shadow-elegant p-8 space-y-8 border border-stone-100/50 text-center">
         <div className="space-y-4">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[--accent-color]/10 text-[--accent-color]">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 text-accent">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -60,48 +60,49 @@ export default function VerifyEmail() {
             </svg>
           </div>
 
-          <h1 className="heading-2">Check Your Email</h1>
-          <p className="text-body text-stone-600 max-w-sm mx-auto">
+          <h1 className="font-cormorant text-4xl font-medium text-primary relative inline-block">
+            Check Your Email
+            <span className="absolute left-1/2 -bottom-2 w-24 h-0.5 bg-accent transform -translate-x-1/2 opacity-80 transition-all duration-300"></span>
+          </h1>
+          <p className="text-stone-700 mt-6 font-light tracking-wide text-balance leading-relaxed max-w-sm mx-auto">
             We've sent you a verification email. Please click the link in the email to verify your account.
           </p>
         </div>
 
         {error && (
-          <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm">
+          <div className="bg-red-50/80 backdrop-blur-sm border border-red-200 text-red-600 p-4 rounded-lg text-sm animate-fade-in shadow-sm">
             {error}
           </div>
         )}
 
         {success && (
-          <div className="bg-green-50 text-green-600 p-3 rounded-lg text-sm">
+          <div className="bg-green-50/80 backdrop-blur-sm border border-green-200 text-green-600 p-4 rounded-lg text-sm animate-fade-in shadow-sm">
             {success}
           </div>
         )}
 
         <div className="space-y-4">
-          <Button
+          <button
             type="button"
-            variant="outline"
-            className="w-full"
-            size="lg"
             onClick={resendVerificationEmail}
             disabled={isResending}
+            className="w-full bg-white border border-stone-200 hover:border-accent text-primary px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
           >
             {isResending ? (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center gap-2">
                 <LoadingSpinner className="h-4 w-4" />
                 <span>Resending...</span>
               </div>
             ) : (
               'Resend Verification Email'
             )}
-          </Button>
+          </button>
 
-          <p className="text-sm text-stone-600">
+          <p className="text-center text-sm text-stone-600 font-light">
             Back to{' '}
             <Link
               href="/signin"
-              className="font-medium text-[--accent-color] hover:text-[--modern-gold]"
+              className="font-medium text-accent hover:text-modern-gold transition-all duration-300 hover:-translate-y-0.5 inline-block"
             >
               Sign in
             </Link>

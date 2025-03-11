@@ -50,10 +50,10 @@ export default function ForgotPassword() {
 
   if (success) {
     return (
-      <div className="min-h-[60vh] flex items-center justify-center px-4">
-        <div className="w-full max-w-md space-y-8 text-center">
+      <div className="w-full max-w-md mx-auto px-4 animate-fade-in">
+        <div className="bg-white rounded-[16px] shadow-elegant p-8 space-y-8 border border-stone-100/50 text-center">
           <div className="space-y-4">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[--accent-color]/10 text-[--accent-color]">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 text-accent">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -70,28 +70,29 @@ export default function ForgotPassword() {
               </svg>
             </div>
 
-            <h1 className="heading-2">Check Your Email</h1>
-            <p className="text-body text-stone-600 max-w-sm mx-auto">
+            <h1 className="font-cormorant text-4xl font-medium text-primary relative inline-block">
+              Check Your Email
+              <span className="absolute left-1/2 -bottom-2 w-24 h-0.5 bg-accent transform -translate-x-1/2 opacity-80 transition-all duration-300"></span>
+            </h1>
+            <p className="text-stone-700 mt-6 font-light tracking-wide text-balance leading-relaxed max-w-sm mx-auto">
               We've sent you an email with a link to reset your password. Please check your inbox.
             </p>
           </div>
 
           <div className="space-y-4">
-            <Button
+            <button
               type="button"
-              variant="outline"
-              className="w-full"
-              size="lg"
               onClick={() => setSuccess(false)}
+              className="w-full bg-white border border-stone-200 hover:border-accent text-primary px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
             >
               Try another email
-            </Button>
+            </button>
 
-            <p className="text-sm text-stone-600">
+            <p className="text-center text-sm text-stone-600 font-light">
               Remember your password?{' '}
               <Link
                 href="/signin"
-                className="font-medium text-[--accent-color] hover:text-[--modern-gold]"
+                className="font-medium text-accent hover:text-modern-gold transition-all duration-300 hover:-translate-y-0.5 inline-block"
               >
                 Sign in
               </Link>
@@ -103,17 +104,20 @@ export default function ForgotPassword() {
   }
 
   return (
-    <div className="min-h-[60vh] flex items-center justify-center px-4">
-      <div className="w-full max-w-md space-y-8">
-        <div className="text-center">
-          <h1 className="heading-2 mb-3">Forgot Password?</h1>
-          <p className="text-body text-stone-600">
+    <div className="w-full max-w-md mx-auto px-4 animate-fade-in">
+      <div className="bg-white rounded-[16px] shadow-elegant p-8 space-y-8 border border-stone-100/50">
+        <div className="text-center space-y-2">
+          <h1 className="font-cormorant text-4xl font-medium text-primary relative inline-block">
+            Forgot Password?
+            <span className="absolute left-1/2 -bottom-2 w-24 h-0.5 bg-accent transform -translate-x-1/2 opacity-80 transition-all duration-300"></span>
+          </h1>
+          <p className="text-stone-700 mt-6 font-light tracking-wide text-balance leading-relaxed">
             Enter your email and we'll send you a link to reset your password
           </p>
         </div>
 
         {error && (
-          <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm">
+          <div className="bg-red-50/80 backdrop-blur-sm border border-red-200 text-red-600 p-4 rounded-lg text-sm animate-fade-in shadow-sm">
             {error}
           </div>
         )}
@@ -126,23 +130,23 @@ export default function ForgotPassword() {
             error={errors.email?.message}
             placeholder="Enter your email"
             disabled={isLoading}
+            className="px-4 py-3 rounded-lg"
           />
 
-          <div className="space-y-4">
-            <Button
+          <div className="space-y-6">
+            <button
               type="submit"
-              className="w-full"
-              size="lg"
               disabled={isLoading}
+              className={`w-full bg-primary text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-wood-frame hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
             >
               {isLoading ? <LoadingButton /> : 'Send Reset Link'}
-            </Button>
+            </button>
 
-            <p className="text-center text-sm text-stone-600">
+            <p className="text-center text-sm text-stone-600 font-light">
               Remember your password?{' '}
               <Link
                 href="/signin"
-                className="font-medium text-[--accent-color] hover:text-[--modern-gold]"
+                className="font-medium text-accent hover:text-modern-gold transition-all duration-300 hover:-translate-y-0.5 inline-block"
               >
                 Sign in
               </Link>

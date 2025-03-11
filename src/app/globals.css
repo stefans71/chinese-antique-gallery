@@ -30,14 +30,14 @@
   .form-select,
   .form-multiselect {
     @apply w-full rounded-lg border-stone-200 bg-white/80 shadow-form transition-all duration-300
-           focus:border-accent focus:ring-1 focus:ring-accent/20 focus:ring-opacity-50 focus:bg-white
+           focus:border-accent focus:ring-1 focus:ring-accent focus:ring-opacity-20 focus:bg-white
            hover:shadow-form-hover focus:shadow-form-focus;
   }
 
   .form-checkbox,
   .form-radio {
     @apply rounded border-stone-300 text-accent shadow-sm transition-all duration-300
-           focus:border-accent focus:ring-1 focus:ring-accent/20 focus:ring-opacity-50
+           focus:border-accent focus:ring-1 focus:ring-accent focus:ring-opacity-20
            hover:border-accent/50;
   }
 
@@ -108,12 +108,12 @@
   /* Auth Form Specific */
   .auth-input {
     @apply form-input bg-white/70 border-stone-200 focus:bg-white 
-           focus:border-accent focus:ring-accent/20 rounded-lg transition-all duration-300;
+           focus:border-accent focus:ring-accent focus:ring-opacity-20 rounded-lg transition-all duration-300;
   }
 
   .auth-checkbox {
     @apply form-checkbox h-4 w-4 rounded border-stone-300 text-accent 
-           focus:ring-accent/20 focus:ring-offset-0 transition-all duration-300;
+           focus:ring-accent focus:ring-opacity-20 focus:ring-offset-0 transition-all duration-300;
   }
 
   .auth-button {
